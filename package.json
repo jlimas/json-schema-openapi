@@ -1,0 +1,21 @@
+{
+  "name": "typescript-playground",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run index.ts"
+  },
+  "devDependencies": {
+    "@types/json-schema-generator": "^2.0.3",
+    "bun-types": "latest",
+    "pretier": "^0.0.1",
+    "prettier": "^3.1.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@openapi-contrib/json-schema-to-openapi-schema": "^3.0.0",
+    "json-schema-generator": "^2.0.6"
+  }
+}
