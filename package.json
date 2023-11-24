@@ -8,7 +8,6 @@
   "devDependencies": {
     "@types/json-schema-generator": "^2.0.3",
     "bun-types": "latest",
-    "pretier": "^0.0.1",
     "prettier": "^3.1.0"
   },
   "peerDependencies": {
