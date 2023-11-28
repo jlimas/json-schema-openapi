@@ -34,21 +34,28 @@ function clean(payload: any) {
   });
   return payload;
 }
+const headers = {
+  "content-type": "application/json; charset=UTF-8",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+};
 
 const server = Bun.serve({
   port: process.env.PORT || 3000,
   async fetch(request) {
+    if (request.method === "OPTIONS") {
+      return new Response(null, {
+        status: 200,
+        headers,
+      });
+    }
     const body = await request.json();
     const jsonSchema = jsonToSchema(body);
     const openapiSchema = await convert(jsonSchema);
     const data = descriptions(clean(openapiSchema));
 
     return Response.json(data, {
-      headers: {
-        "content-type": "application/json; charset=UTF-8",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      },
+      headers,
     });
   },
 });
