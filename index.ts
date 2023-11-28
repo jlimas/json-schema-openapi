@@ -38,6 +38,7 @@ const headers = {
   "content-type": "application/json; charset=UTF-8",
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Accept",
 };
 
 const server = Bun.serve({
