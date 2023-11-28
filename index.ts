@@ -41,7 +41,15 @@ const server = Bun.serve({
     const body = await request.json();
     const jsonSchema = jsonToSchema(body);
     const openapiSchema = await convert(jsonSchema);
-    return Response.json(descriptions(clean(openapiSchema)));
+    const data = descriptions(clean(openapiSchema));
+
+    return Response.json(data, {
+      headers: {
+        "content-type": "application/json; charset=UTF-8",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      },
+    });
   },
 });
 
